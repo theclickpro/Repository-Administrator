@@ -2,7 +2,7 @@
 include(dirname(__FILE__).'/_public.php');
 
 //
-$db = Db::inst();
+$db = Db::inst('users');
 $user = $_POST['username'];
 $pass = md5($_POST['password']);
 

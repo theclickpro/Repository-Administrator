@@ -59,3 +59,17 @@ function isAdmin()
 	return false;
 }
 
+function get_files_in_dir($dir)
+{
+	$files = array();
+	$d = opendir($dir);
+	while ($f = readdir($d))
+	{
+		if ($f == '.' || $f == '..' || $f == '.keep') continue;
+		$files[] = $f;
+	}
+	closedir($d);
+
+	return $files;
+}
+

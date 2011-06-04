@@ -2,14 +2,24 @@
 class Db
 {
 	private static $db = null;
-	public static function inst()
+	public static function inst($coll)
 	{
 		if (!is_null(self::$db))
 		{
 			return self::$db;
 		}
+
+		$parent = App::storageDir();
+		if (!is_dir($parent))
+		{
+			throw new Exception('Storage dir "'.$parent.'" does not exists.  Please create storage dir and make it writable by the web server.');
+		}
+		else if (!is_writable($parent))
+		{
+			throw new Exception('Storage dir "'.$parent.'" is not writable.  Please make the directory writable by the web server.');
+		}
 		
-		$storageDir = App::storageDir();
+		$storageDir = "$parent/$coll";
 		if (!is_dir($storageDir)) {
 			throw new Exception('Storage dir "'.$storageDir.'" does not exists');
 		}
@@ -19,7 +29,7 @@ class Db
 	}
 
 	protected $dir;
-	public function __construct($dir)
+	protected function __construct($dir)
 	{
 		$this->dir = $dir;
 	}

@@ -46,14 +46,10 @@ class repo_Factory
 		$repos = array();
 		foreach ($paths as $path => $type)
 		{
-			$d = opendir($path);
-			while ($f = readdir($d))
+			foreach (get_files_in_dir($path) as $f)
 			{
-				if ($f == '.' || $f == '..') continue;
-
 				$repos[$f] = $type;
 			}
-			closedir($d);
 		}
 		return $repos;
 	}
@@ -63,14 +59,10 @@ class repo_Factory
 		$path = App::trashDir();
 
 		$repos = array();
-		$d = opendir($path);
-		while ($f = readdir($d))
+		foreach (get_files_in_dir($path) as $f)
 		{
-			if ($f == '.' || $f == '..') continue;
-
 			$repos[] = $f;
 		}
-		closedir($d);
 		return $repos;
 	}
 }

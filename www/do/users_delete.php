@@ -18,7 +18,7 @@ if ($username == $_SESSION['sess']['username'])
 
 
 
-$db = Db::inst();
+$db = Db::inst('users');
 
 if (!$db->exists($username))
 {

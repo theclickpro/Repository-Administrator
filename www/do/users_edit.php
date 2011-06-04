@@ -4,7 +4,7 @@ $tpl = new Template();
 
 
 
-$db = Db::inst();
+$db = Db::inst('users');
 
 $user = $_REQUEST['username'];
 if (!$db->exists($user))

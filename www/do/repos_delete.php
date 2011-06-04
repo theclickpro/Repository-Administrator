@@ -26,7 +26,7 @@ $obj->delete();
 
 
 
-alert('Repository has been moved to the trash directory ' . $repo_trash);
+alert('Repository has been moved to the trash directory ');
 redirect(BASEURL.'/do/repos.php');
 
 

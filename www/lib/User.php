@@ -3,7 +3,7 @@ class User
 {
 	public static function create($username, $pass, $confirm_pass, $admin)
 	{
-		$db = Db::inst();
+		$db = Db::inst('users');
 
 		$admin = (int) $admin;
 		if ($admin != 1) $admin = -1;
@@ -96,7 +96,7 @@ class User
 
 	public static function update($me, $user, $pass, $confirm_pass, $admin)
 	{
-		$db = Db::inst();
+		$db = Db::inst('users');
 
 		$amIAdmin = $db->getVal($me, 'admin');
 		if ($amIAdmin == 1)  { $amIAdmin = true; } else { $amIAdmin = false; }

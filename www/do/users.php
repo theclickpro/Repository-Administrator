@@ -4,7 +4,7 @@ include(dirname(__FILE__).'/_private.php');
 $tpl = new Template();
 
 
-$db = Db::inst();
+$db = Db::inst('users');
 
 $res = $db->getAll();
 
