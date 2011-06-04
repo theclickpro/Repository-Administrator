@@ -84,3 +84,9 @@ table.form th {
 
 .button-new {
 }
+
+.code {
+	border: 1px dashed #dfdfdf;
+	background-color: #f5f5f5;
+	padding: 1em;
+}

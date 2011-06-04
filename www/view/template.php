@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
 <title><?php echo App::name();?></title>
@@ -19,6 +20,8 @@
 			<li><a href="<?php echo BASEURL?>/do/repos.php">Repositories</a></li>
 			<li><a href="<?php echo BASEURL?>/do/users.php">Users</a></li>
 			<li><a href="<?php echo BASEURL?>/do/users_edit.php?username=<?php echo $_SESSION['sess']['username']?>">My Password</a></li>
+			<li>&nbsp;</li>
+			<li><a href="<?php echo BASEURL?>/do/help.php">Help</a></li>
 		</ul>
 		</div>
 		<?php endif;?>
