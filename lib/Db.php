@@ -21,7 +21,11 @@ class Db
 		
 		$storageDir = "$parent/$coll";
 		if (!is_dir($storageDir)) {
-			throw new Exception('Storage dir "'.$storageDir.'" does not exists');
+			$ret = mkdir($storageDir);
+			if (!$ret)
+			{
+				throw new Exception('Not able to create "'.$storageDir.'" make sure '.$parent.' is writable by the web server.');
+			}
 		}
 
 		self::$db = new Db($storageDir);

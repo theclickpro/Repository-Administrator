@@ -17,7 +17,7 @@ class Template
 	public function fetch($tplfile)
 	{
 		ob_start();
-		include(PATH.'/view/' . $tplfile);
+		include(PATH.'/www/view/' . $tplfile);
 		return ob_get_clean();
 	}
 }

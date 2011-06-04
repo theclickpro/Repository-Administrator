@@ -1,6 +1,5 @@
 <?php
-include(dirname(__FILE__).'/../common.php');
-
+include(dirname(__FILE__).'/../../common.php');
 
 // Base URL
 $uri = '';

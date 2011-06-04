@@ -19,7 +19,7 @@ Copyright 2011 Ricardo Ramirez, The ClickPro.com LLC
     along with Repository Administrator.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-include(dirname(__FILE__).'/common.php');
+include(dirname(__FILE__).'/../common.php');
 
 redirect('do/login.php');
 
