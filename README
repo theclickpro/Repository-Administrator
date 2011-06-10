@@ -1,5 +1,29 @@
 
+Installation
+============
+
+1. To Install RepoAdmin execute
+	php install.php
+
+
+2. Follow the instructions from the installation script
+
+
+
 Directory Structure
+===================
+
+	install.php
+		Installation script. Run it by executing:
+
+			php install.php
+
+	www/
+		Web content.  This directory is tobe aliased or linked
+		in the apache configuration
+
+	config.php
+		Configuration file
 
 	data/
 		Variable data, repositories, Userfiles, etc
