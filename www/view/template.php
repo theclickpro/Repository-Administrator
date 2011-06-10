@@ -38,8 +38,8 @@ along with Repository Administrator.  If not, see <http://www.gnu.org/licenses/>
 			<li><a href="<?php echo BASEURL?>/do/repos.php">Repositories</a></li>
 			<li><a href="<?php echo BASEURL?>/do/users.php">Users</a></li>
 			<li><a href="<?php echo BASEURL?>/do/users_edit.php?username=<?php echo $_SESSION['sess']['username']?>">My Password</a></li>
-			<li>&nbsp;</li>
-			<li><a href="<?php echo BASEURL?>/do/help.php">Help</a></li>
+			<!--li>&nbsp;</li>
+			<li><a href="<?php echo BASEURL?>/do/help.php">Help</a></li-->
 		</ul>
 		</div>
 		<?php endif;?>

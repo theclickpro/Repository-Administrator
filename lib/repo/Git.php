@@ -29,9 +29,9 @@ class repo_Git implements repo_Repo
 	public function __construct($name) {
 		$this->name = $name;
 		$cfg = App::getRepoCfg();
-		$this->uri = $cfg['git']['uri'];
-		$this->dir = $cfg['git']['dir'];
-		$this->git = $cfg['git']['git'];
+		$this->uri	= $cfg['git']['uri'];
+		$this->dir	= $cfg['git']['dir'];
+		$this->git	= $cfg['git']['git'];
 	}
 
 	public function getName() { return $this->name; }

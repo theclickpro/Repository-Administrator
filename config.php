@@ -83,7 +83,7 @@ $CFG['repos']['svn']['dir']		= 	dirname(__FILE__) .'/data/svn';
 // Trash Directory.
 //	All deleted repositories will be first moved here.
 //
-$CFG['trash']				=	dirname(__FILE__)."/trash";
+$CFG['trash']				=	dirname(__FILE__)."/data/trash";
 
 //
 // Application Data storage directory

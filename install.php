@@ -82,6 +82,21 @@ if (!$svnEnabled && !$gitEnabled)
 
 
 //
+// Apache user
+//
+$apache_user = '';
+while (empty($apache_user))
+{
+	$apache_user = ask("\nUser under which apache process runs?(www-data|apache) : ", array());
+}
+
+$apache_group = '';
+while (empty($apache_group))
+{
+	$apache_group = ask("\nGroup under which apache process runs?(www-data|apache) : ", array());
+}
+
+//
 // Check installation directory
 //
 if (is_dir($dpath) || is_file($dpath))
@@ -102,17 +117,15 @@ if (!is_writable($basedir))
 echo "\n\nInstalling\n";
 $curDir = realpath(dirname(__FILE__));
 
+//mkdir
 echo "Creating directory $dpath...";
 mkdir($dpath, 0755);
-echo "Done\n";
-
 
 //
-//
+// copy
 echo "Copying content ...";
 shell_exec("cp -R $curDir/* $dpath");
 echo "Done\n";
-
 
 //
 // Setup DB
@@ -136,6 +149,16 @@ file_put_contents($dpath.'/config.php', getConfigFile($dpath, $gitEnabled, $svnE
 
 
 
+//
+// chown chmod
+//
+$apache_user = escapeshellarg($apache_user);
+$apache_group = escapeshellarg($apache_group);
+echo "chown -R $apache_user:$apache_group $dpath\n";
+shell_exec("chown -R $apache_user:$apache_group $dpath");
+shell_exec("chmod -R u+rw $dpath");
+echo "Done\n";
+
 
 
 
@@ -145,7 +168,7 @@ echo "\n
 
 1. Add the following to your apache configuration:
 
-	Alias /repoadmin $dpath
+	Alias /repoadmin $dpath/www
 ";
 if ($gitEnabled)
 {
@@ -245,7 +268,7 @@ along with Repository Administrator.  If not, see <http://www.gnu.org/licenses/>
 //		Require valid-user
 //	</Location>
 //
-//
+
 ENDS;
 if ($git) {
 $output .= <<<ENDS
@@ -280,7 +303,7 @@ $output .= <<<ENDS
 //		AuthUserFile $dpath/password
 //		Require valid-user
 //	</Location>
-//
+
 ENDS;
 if ($svn)
 {
@@ -309,7 +332,7 @@ $output .= <<<ENDS
 // Trash Directory.
 //	All deleted repositories will be first moved here.
 //
-\$CFG['trash']				=	"$dpath/trash";
+\$CFG['trash']				=	"$dpath/data/trash";
 
 
 //
@@ -320,4 +343,10 @@ $output .= <<<ENDS
 ENDS;
 
 return $output;
+}
+
+
+function guessApacheUser()
+{
+	
 }

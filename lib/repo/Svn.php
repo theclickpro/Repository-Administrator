@@ -29,9 +29,9 @@ class repo_Svn implements repo_Repo
 	public function __construct($name) {
 		$this->name = $name;
 		$cfg = App::getRepoCfg();
-		$this->dir = $cfg['svn']['dir'];
-		$this->uri = $cfg['svn']['uri'];
-		$this->svnadmin = $cfg['svn']['svnadmin'];
+		$this->dir	= $cfg['svn']['dir'];
+		$this->uri	= $cfg['svn']['uri'];
+		$this->svnadmin	= $cfg['svn']['svnadmin'];
 	}
 
 	public function getName() { return $this->name; }
