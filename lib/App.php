@@ -47,7 +47,6 @@ class App
 	}
 
 
-
 	public static function name() { return self::$app_name; }
 
 	public static function passwordFile() { return self::$password_file; }

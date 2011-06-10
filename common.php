@@ -37,6 +37,10 @@ spl_autoload_register('classLoader');
 
 App::loadConfig(PATH.'/config.php');
 
+
+Db::setStorageDir(App::storageDir());
+
+
 function alert($msg)
 {
 	$_SESSION['sess']['alert'] = $msg;

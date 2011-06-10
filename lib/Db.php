@@ -22,6 +22,10 @@ along with Repository Administrator.  If not, see <http://www.gnu.org/licenses/>
 class Db
 {
 	private static $db = null;
+	private static $storageDir = '';
+
+	public static function setStorageDir($dir) { self::$storageDir = $dir; }
+
 	public static function inst($coll)
 	{
 		if (!is_null(self::$db))
@@ -29,7 +33,7 @@ class Db
 			return self::$db;
 		}
 
-		$parent = App::storageDir();
+		$parent = self::$storageDir;
 		if (!is_dir($parent))
 		{
 			throw new Exception('Storage dir "'.$parent.'" does not exists.  Please create storage dir and make it writable by the web server.');
