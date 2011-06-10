@@ -52,14 +52,14 @@ function getExecPath($poss, $nfq)
 //
 $dpath = '/srv/repoadmin';
 $dpath = ask("\nSpecify the path where you want to install RepoAdmin.
-Hit enter to accept the default path (Default: $dpath):", array(), $dpath);
+Hit enter to accept the default path (Default: $dpath): ", array(), $dpath);
 
 
 //
 // Enable GIT
 //
 $gitEnabled = true;
-$tmp = ask("\nDo you want to enable GIT repository support? (Yes/No/Y/N, Default Yes) : ", array('y', 'yes', 'no', 'n'), 'y');
+$tmp = ask("\nDo you want to enable GIT repository support? Yes/No/Y/N (Default : Yes): ", array('y', 'yes', 'no', 'n'), 'y');
 if ($tmp[0] == 'n')
 {
 	$gitEnabled = false;
@@ -69,7 +69,7 @@ if ($tmp[0] == 'n')
 // Enable SVN
 //
 $svnEnabled = true;
-$tmp = ask("\nDo you want to enable SVN repository support? (Yes/No/Y/N, Default Yes) : ", array('y', 'yes', 'no', 'n'), 'y');
+$tmp = ask("\nDo you want to enable SVN repository support? Yes/No/Y/N (Default : Yes): ", array('y', 'yes', 'no', 'n'), 'y');
 if ($tmp[0] == 'n')
 {
 	$svnEnabled = false;
@@ -87,13 +87,13 @@ if (!$svnEnabled && !$gitEnabled)
 $apache_user = '';
 while (empty($apache_user))
 {
-	$apache_user = ask("\nUser under which apache process runs?(www-data|apache) : ", array());
+	$apache_user = ask("\nApache user? (www-data|apache|http|httpd) : ", array());
 }
 
 $apache_group = '';
 while (empty($apache_group))
 {
-	$apache_group = ask("\nGroup under which apache process runs?(www-data|apache) : ", array());
+	$apache_group = ask("\nApache group? (www-data|apache|http|httpd) : ", array());
 }
 
 //
