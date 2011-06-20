@@ -21,16 +21,21 @@ along with Repository Administrator.  If not, see <http://www.gnu.org/licenses/>
 */
 class Db
 {
-	private static $db = null;
+	private static $db = array();
 	private static $storageDir = '';
 
 	public static function setStorageDir($dir) { self::$storageDir = $dir; }
 
+	/**
+	 * 
+	 * @param string $coll
+	 * @return Db
+	 */
 	public static function inst($coll)
 	{
-		if (!is_null(self::$db))
+		if (!empty(self::$db[$coll]))
 		{
-			return self::$db;
+			return self::$db[$coll];
 		}
 
 		$parent = self::$storageDir;
@@ -52,8 +57,8 @@ class Db
 			}
 		}
 
-		self::$db = new Db($storageDir);
-		return self::$db;
+		self::$db[$coll] = new Db($storageDir);
+		return self::$db[$coll];
 	}
 
 	protected $dir;
@@ -77,7 +82,7 @@ class Db
 		}
 
 		if ($n != $k) {
-			throw new Exception('Invalid DB Key');
+			throw new Exception('Invalid character in DB Key');
 		}
 
 		return $n;
@@ -127,9 +132,29 @@ class Db
 		unlink($file);
 	}
 
+	/**
+	 *
+	 * @return DbRes 
+	 */
 	public function getAll()
 	{
 		return new DbRes($this->dir);
+	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	public function getAllAsArr()
+	{
+		$ret = array();
+		$res = $this->getAll();
+		while ($row = $res->fetch())
+		{
+			$ret[] = $row;
+		}
+
+		return $ret;
 	}
 }
 

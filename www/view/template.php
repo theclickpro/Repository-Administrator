@@ -21,6 +21,7 @@ along with Repository Administrator.  If not, see <http://www.gnu.org/licenses/>
 <head>
 <title><?php echo App::name();?></title>
 <link rel="stylesheet" type="text/css" href="<?php echo BASEURL?>/view/template.css" media="screen" />
+<script type="text/javascript" src="<?php echo BASEURL?>/view/jquery.js" media="screen"></script>
 </head>
 <body>
 <div id="page">
@@ -37,6 +38,8 @@ along with Repository Administrator.  If not, see <http://www.gnu.org/licenses/>
 		<ul>
 			<li><a href="<?php echo BASEURL?>/do/repos.php">Repositories</a></li>
 			<li><a href="<?php echo BASEURL?>/do/users.php">Users</a></li>
+			<li><a href="<?php echo BASEURL?>/do/perm.php">Permissions</a></li>
+			<li>&nbsp;</li>
 			<li><a href="<?php echo BASEURL?>/do/users_edit.php?username=<?php echo $_SESSION['sess']['username']?>">My Password</a></li>
 			<!--li>&nbsp;</li>
 			<li><a href="<?php echo BASEURL?>/do/help.php">Help</a></li-->
