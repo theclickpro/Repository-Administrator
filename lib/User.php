@@ -158,12 +158,15 @@ class User
 		$arg_user = escapeshellarg($user);
 		$arg_pass = escapeshellarg($pass);
 
-		// update svn
-		if(!file_exists("$password_file"))
+		if (!empty($pass))
 		{
-			exec("$htpasswd -cmb $password_file $arg_user $arg_pass"); 
-		} else {
-			exec("$htpasswd -bm $password_file $arg_user $arg_pass"); 
+			// update svn
+			if(!file_exists("$password_file"))
+			{
+				exec("$htpasswd -cmb $password_file $arg_user $arg_pass"); 
+			} else {
+				exec("$htpasswd -bm $password_file $arg_user $arg_pass"); 
+			}
 		}
 	}
 }

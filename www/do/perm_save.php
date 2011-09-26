@@ -19,48 +19,15 @@ You should have received a copy of the GNU General Public License
 along with Repository Administrator.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-include(dirname(__FILE__).'/_private.php');
-$tpl = new Template();
-
-//
-//
-//
-if (!isAdmin())
-{
-	alert('You are not allowed to access permissions');
-	redirect(BASEURL.'/do/repos.php');
-}
-
-//
-//
-//
-$groupArr	= Db::inst('group')->getAllAsArr();
-$aclArr		= Db::inst('acl')->getAllAsArr();
-$userArr	= Db::inst('users')->getAllAsArr();
+include(dirname(__FILE__).'/_admin.php');
 
 
-$userList	= array();
-foreach ($userArr as $user)
-{
-	$userList[] = $user['username'];
-}
+$acl_conf = $_POST['acl_conf'];
+
+$ret = file_put_contents(PATH.'/acl.conf', $acl_conf);
 
 
-//
-//
-$tpl->userList = $userList;
-/*
-$tpl->aclArr = $aclArr;
-$tpl->groupArr = $groupArr;
-$tpl->repos = repo_Factory::getRepos();
-$tpl->enable_acl = Acl::isEnabled();
-*/
-
-$tpl->acl_conf =  file_get_contents(PATH.'/acl.conf');
+alert('ACL list has been saved');
+redirect(BASEURL . '/do/perm.php');
 
 
-//
-//
-//
-$tpl->content = $tpl->fetch(basename(__FILE__));
-echo $tpl->fetch('template.php');
